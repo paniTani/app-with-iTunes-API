@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>App for iTunes</title>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/solid.css" integrity="sha384-v2Tw72dyUXeU3y4aM2Y0tBJQkGfplr39mxZqlTBDUZAb9BGoC40+rdFCG0m10lXk" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/fontawesome.css" integrity="sha384-q3jl8XQu1OpdLgGFvNRnPdj5VIlCvgsDQTQB6owSOHWlAurxul7f+JpUOVdAiJ5P" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="search-box">
+        <div class="form-search">
+            <input type="text" class="form-control" id="search-input" placeholder="Search">
+            <button class="btn" id="searchBtn">
+                <i class="fas fa-search"></i>
+            </button>
+        </div>
+    </div>
+    <div class="container" id="container">
+        <div class="column-name">
+            <div class="col-head col-name-artist">Artist</div>
+            <div class="col-head col-name-track">Track</div>
+            <div class="col-head col-name-collection">Collection</div>
+            <div class="col-head col-name-genre">Genre</div>
+        </div>
+        <div class="enter-track-container"></div>
+    </div>
+
+    <script id="track-block" type="text/x-handlebars-template">
+        <div class="entry">
+            {{#results}}
+            <div class="track-container">
+                <div class="vision-info">
+                    <div class="track-info track-img">
+                        <img src="{{artworkUrl100}}" alt="">
+                    </div>
+                    <div class="track-description track-artist">{{artistName}}</div>
+                    <div class="track-description track-info track-name">{{trackCensoredName}}</div>
+                    <div class="track-description track-info track-collection">{{collectionName}}</div>
+                    <div class="track-description track-info track-genre">{{primaryGenreName}}</div>
+                    <div class="track-description track-info open-close">
+                        <i class="fas fa-plus open-close-sign"></i>
+                        <i class="fas fa-minus hide-sign open-close-sign"></i>
+                    </div>
+                </div>
+                <div class="hidden-info">
+                    <div class="hidden-info-container">
+                        <h2>{{artistName}} - {{trackCensoredName}}</h2> <i class="fas fa-music"></i>
+                    </div>
+                    <div class="track-details">
+                        <div class="track-details-three-p">
+                            <p><span class="value-name">Collection:</span> {{collectionName}}</p>
+                            <p><span class="value-name">Track Count:</span> {{trackCount}}</p>
+                            <p><span class="value-name">Price:</span> {{collectionPrice}} {{currency}}</p>
+                        </div>
+                        <div class="track-details-two-p">
+                            <p><span class="value-name">Track duration:</span> {{getTime trackTimeMillis}} min</p>
+                            <p><span class="value-name">Track Price:</span> {{trackPrice}} {{currency}}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {{/results}}
+        </div>
+    </script>
+
+    <script type="text/javascript" src="../node_modules/handlebars/dist/handlebars.js"></script>
+    <script type="text/javascript" src="js/script.js"></script>
+</body>
+</html>
